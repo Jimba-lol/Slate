@@ -1,4 +1,4 @@
-import { Actor } from './actor';
+import { Actor } from '../models/actor';
 
 export const ACTORS: Actor[] = [
     { 
