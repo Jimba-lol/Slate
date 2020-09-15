@@ -3,15 +3,15 @@
     <hr><br>
     <form (ngSubmit)="onSubmit()" ngNativeValidate>
     <div class="form-group">
-        <label for="username">Username</label>
+        <label for="email">Email</label>
         <input
-        [(ngModel)]="user.username"
-        name="username"
-        type="username"
+        [(ngModel)]="user.email"
+        name="email"
+        type="email"
         required
         class="form-control"
-        id="username"
-        placeholder="enter an alphanumeric (A-Z, 0-9) username">
+        id="email"
+        placeholder="enter a valid email">
     </div>
     <div class="form-group">
         <label for="password">Password</label>
