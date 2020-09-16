@@ -1,5 +1,5 @@
 import { User } from '../../models/user';
-import { AuthActionTypes, All } from '../user.actions';
+import { AuthActionTypes, All } from '../actions/auth.actions';
 
 export interface State {
     isAuthenticated: boolean;
@@ -30,12 +30,28 @@ export function reducer(state = initialState, action: All): State {
             return {
                 ...state,
                 isAuthenticated: false,
-                user: {
-                    token: null,
-                    email: null,
-                },
-                errorMessage: 'Login Failure',
+                errorMessage: 'Incorrect Email and/or Password',
             }
+        }
+        case AuthActionTypes.SIGNUP_SUCCESS: {
+            return {
+                ...state,
+                isAuthenticated: true,
+                user: {
+                    token: action.payload.token,
+                    email: action.payload.email,
+                },
+                errorMessage: null,
+            };
+        }
+        case AuthActionTypes.SIGNUP_FAILURE: {
+            return {
+                ...state,
+                errorMessage: 'That email is already in use.',
+            }
+        }
+        case AuthActionTypes.LOGOUT: {
+            return initialState;
         }
         default: {
             return state;
